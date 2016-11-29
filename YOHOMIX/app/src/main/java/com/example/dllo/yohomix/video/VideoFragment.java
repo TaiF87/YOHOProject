@@ -36,7 +36,7 @@ public class VideoFragment extends BaseFragment {
         vpVideo.setAdapter(mVPAdapter);
         tlVideo.setupWithViewPager(vpVideo);
         tlVideo.setSelectedTabIndicatorColor(Color.WHITE);
-        tlVideo.setTabTextColors(Color.RED,Color.BLACK);
+        tlVideo.setTabTextColors(Color.BLACK,Color.RED);
     }
 
 }

@@ -100,21 +100,21 @@ public class ListViewAdapter extends BaseAdapter {
                 Date date = new Date(Long.valueOf(mListBean.getData().get(i).getParams().get(0).getCreate_time()));
                 String time = new SimpleDateFormat("MM.dd.yyy").format(date);
                 holderOne.oneTime.setText(String.valueOf(time));
-                Picasso.with(mContext).load(mListBean.getData().get(i).getParams().get(0).getImage()).into(holderOne.onePic);
+                Picasso.with(mContext).load(mListBean.getData().get(i).getParams().get(0).getImage()).fit().into(holderOne.onePic);
 
                 holderOne.twoData.setText(mListBean.getData().get(i).getParams().get(1).getTitle());
                 holderOne.twoGoods.setText("# " + mListBean.getData().get(i).getParams().get(1).getTag().get(0).getTag_name());
                 Date date1 = new Date(Long.valueOf(mListBean.getData().get(i).getParams().get(1).getCreate_time()));
                 String time1 = new SimpleDateFormat("MM.dd.yyy").format(date1);
                 holderOne.twoTime.setText(String.valueOf(time1));
-                Picasso.with(mContext).load(mListBean.getData().get(i).getParams().get(1).getImage()).into(holderOne.twoPic);
+                Picasso.with(mContext).load(mListBean.getData().get(i).getParams().get(1).getImage()).fit().into(holderOne.twoPic);
 
                 holderOne.threeData.setText(mListBean.getData().get(i).getParams().get(2).getTitle());
-                holderOne.threeGoods.setText(mListBean.getData().get(i).getParams().get(2).getTag().get(0).getTag_name());
+                holderOne.threeGoods.setText("# " + mListBean.getData().get(i).getParams().get(2).getTag().get(0).getTag_name());
                 Date date2 = new Date(Long.valueOf(mListBean.getData().get(i).getParams().get(2).getCreate_time()));
                 String time2 = new SimpleDateFormat("MM.dd.yyy").format(date2);
                 holderOne.threeTime.setText(String.valueOf(time2));
-                Picasso.with(mContext).load(mListBean.getData().get(i).getParams().get(2).getImage()).into(holderOne.threePic);
+                Picasso.with(mContext).load(mListBean.getData().get(i).getParams().get(2).getImage()).fit().into(holderOne.threePic);
                 break;
             case TYPE_TWO:
                 holderTwo.recomData.setText(mListBean.getData().get(i).getParams().get(0).getTitle());
@@ -122,7 +122,7 @@ public class ListViewAdapter extends BaseAdapter {
                 Date date3 = new Date(Long.valueOf(mListBean.getData().get(i).getParams().get(0).getCreate_time()));
                 String time3 = new SimpleDateFormat("MM.dd.yyy").format(date3);
                 holderTwo.recomTime.setText(String.valueOf(time3));
-                Picasso.with(mContext).load(mListBean.getData().get(i).getParams().get(0).getImage()).fit().into(holderTwo.RecomPic);
+                Picasso.with(mContext).load(mListBean.getData().get(i).getParams().get(0).getImage()).into(holderTwo.RecomPic);
                 break;
 
 

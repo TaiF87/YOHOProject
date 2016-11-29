@@ -54,21 +54,23 @@
         </RadioGroup>
     </LinearLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="300dp"
         android:layout_height="match_parent"
+        android:layout_gravity="left"
         android:background="#000"
-        android:layout_gravity="left">
+        >
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="275dp">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:id="@+id/ll_click"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="80dp"
                 android:orientation="vertical">
 
                 <ImageView
@@ -79,13 +81,122 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_horizontal"
                     android:text="登录"
+                    android:textColor="#fff"
+                    android:textSize="18sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="250dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_collection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="我的收藏"
+                    android:textColor="#fff"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/tv_magazine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="我的杂志"
+                    android:textColor="#fff"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/tv_questions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="我的提问"
                     android:textColor="#fff"
                     android:textSize="16sp"/>
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/ll_feedback"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@mipmap/menu_feedback"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="意见反馈"
+                        android:textColor="#fff"
+                        android:textSize="12sp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_evaluate"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@mipmap/menu_comment"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="给我评价"
+                        android:textColor="#fff"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_setUP"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@mipmap/menu_setting"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="设置"
+                        android:textColor="#fff"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+
+            </LinearLayout>
         </RelativeLayout>
 
-    </FrameLayout>
+    </LinearLayout>
 
 </android.support.v4.widget.DrawerLayout>
