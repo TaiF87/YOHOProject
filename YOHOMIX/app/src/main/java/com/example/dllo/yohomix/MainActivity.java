@@ -21,7 +21,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private DrawerLayout mDrawer;
     private RadioButton rbRecommended, rbColumns, rbCommunity, rbVideo, rbMagazine;
     private FragmentManager manager;
-
+    //哈哈哈哈哈哈哈哈哈AHZv
     @Override
     protected int setLayout() {
         return R.layout.activity_main;
