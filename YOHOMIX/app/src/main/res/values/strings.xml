@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">YOHOMIX</string>
+    <string name="recommended">推荐</string>
+    <string name="columns">栏目</string>
+    <string name="community">社区</string>
+    <string name="video">视频</string>
+    <string name="magazine">杂志</string>
+</resources>

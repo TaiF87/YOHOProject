@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.dllo.yohomix.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/fl_main"
+            style="@style/fragment"/>
+
+        <RadioGroup
+            style="@style/radiogroup"
+            android:orientation="horizontal"
+            android:padding="@dimen/activity_padding">
+
+            <RadioButton
+                android:id="@+id/rb_recommended"
+                style="@style/radioButton"
+                android:checked="true"
+                android:drawableTop="@drawable/recommended"
+                android:text="@string/recommended"/>
+
+            <RadioButton
+                android:id="@+id/rb_columns"
+                style="@style/radioButton"
+                android:drawableTop="@drawable/columns"
+                android:text="@string/columns"/>
+
+            <RadioButton
+                android:id="@+id/rb_community"
+                style="@style/radioButton"
+                android:drawableTop="@drawable/community"
+                android:text="@string/community"/>
+
+            <RadioButton
+                android:id="@+id/rb_video"
+                style="@style/radioButton"
+                android:drawableTop="@drawable/video"
+                android:text="@string/video"/>
+
+            <RadioButton
+                android:id="@+id/rb_magazine"
+                style="@style/radioButton"
+                android:drawableTop="@drawable/magazine"
+                android:text="@string/magazine"/>
+        </RadioGroup>
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000"
+        android:layout_gravity="left">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="275dp">
+
+            <LinearLayout
+                android:id="@+id/ll_click"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/default_head"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="登录"
+                    android:textColor="#fff"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+        </RelativeLayout>
+
+    </FrameLayout>
+
+</android.support.v4.widget.DrawerLayout>
