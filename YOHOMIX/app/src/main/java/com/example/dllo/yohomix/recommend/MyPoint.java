@@ -12,7 +12,7 @@ import android.view.View;
  */
 
 public class MyPoint extends View {
-    private int r = 10;
+    private int r = 6;
     private boolean isSelected = false;
 
     @Override

@@ -11,6 +11,8 @@ import com.android.volley.toolbox.Volley;
 import com.example.dllo.yohomix.R;
 import com.example.dllo.yohomix.URLValues;
 import com.example.dllo.yohomix.base.BaseFragment;
+import com.example.dllo.yohomix.volley.NetHelper;
+import com.example.dllo.yohomix.volley.NetListener;
 import com.google.gson.Gson;
 
 /**
@@ -38,21 +40,35 @@ public class LiveFragment extends BaseFragment{
     }
 
     private void initVolley() {
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        StringRequest stringRequest = new StringRequest(URLValues.LIVE_URL, new Response.Listener<String>() {
+        NetHelper.MyRequest(URLValues.LIVE_URL, BaseLive.class, new NetListener<BaseLive>() {
             @Override
-            public void onResponse(String response) {
-                Gson gson = new Gson();
-                beans = gson.fromJson(response,BaseLive.class);
+            public void successListener(BaseLive response) {
+                beans = response;
                 mAdapter.setLive(beans);
                 lvLive.setAdapter(mAdapter);
             }
-        }, new Response.ErrorListener() {
+
             @Override
-            public void onErrorResponse(VolleyError error) {
+            public void errorListener(VolleyError error) {
 
             }
         });
-        requestQueue.add(stringRequest);
+
+//        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+//        StringRequest stringRequest = new StringRequest(URLValues.LIVE_URL, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                Gson gson = new Gson();
+//                beans = gson.fromJson(response,BaseLive.class);
+//                mAdapter.setLive(beans);
+//                lvLive.setAdapter(mAdapter);
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//
+//            }
+//        });
+//        requestQueue.add(stringRequest);
     }
 }

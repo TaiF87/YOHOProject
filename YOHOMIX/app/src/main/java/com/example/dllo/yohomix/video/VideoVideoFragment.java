@@ -13,6 +13,8 @@ import com.android.volley.toolbox.Volley;
 import com.example.dllo.yohomix.R;
 import com.example.dllo.yohomix.URLValues;
 import com.example.dllo.yohomix.base.BaseFragment;
+import com.example.dllo.yohomix.volley.NetHelper;
+import com.example.dllo.yohomix.volley.NetListener;
 import com.google.gson.Gson;
 
 import java.util.HashMap;
@@ -41,29 +43,45 @@ public class VideoVideoFragment extends BaseFragment{
         initVolley();
     }
     private void initVolley() {
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        StringRequest stringRequest = new StringRequest(URLValues.VIDEO_URL, new Response.Listener<String>() {
+        HashMap<String,String> map = new HashMap<>();
+        map.put(URLValues.POST_KEY,URLValues.VIDEO_VALUES);
+        NetHelper.MyRequest(URLValues.VIDEO_URL, BaseVideo.class, new NetListener<BaseVideo>() {
             @Override
-            public void onResponse(String response) {
-                Gson gson = new Gson();
-                mBean = gson.fromJson(response,BaseVideo.class);
+            public void successListener(BaseVideo response) {
+                mBean = response;
                 mAdapter.setBeen(mBean);
                 lvVideo.setAdapter(mAdapter);
             }
-        }, new Response.ErrorListener() {
+
             @Override
-            public void onErrorResponse(VolleyError error) {
+            public void errorListener(VolleyError error) {
 
             }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> mMap = new HashMap<>();
-                mMap.put(URLValues.POST_KEY,URLValues.VIDEO_VALUES);
-                return mMap;
-            }
-        };
-        requestQueue.add(stringRequest);
+        },map);
+
+//        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+//        StringRequest stringRequest = new StringRequest(URLValues.VIDEO_URL, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                Gson gson = new Gson();
+//                mBean = gson.fromJson(response,BaseVideo.class);
+//                mAdapter.setBeen(mBean);
+//                lvVideo.setAdapter(mAdapter);
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//
+//            }
+//        }){
+//            @Override
+//            protected Map<String, String> getParams() throws AuthFailureError {
+//                Map<String,String> mMap = new HashMap<>();
+//                mMap.put(URLValues.POST_KEY,URLValues.VIDEO_VALUES);
+//                return mMap;
+//            }
+//        };
+//        requestQueue.add(stringRequest);
     }
 
 }

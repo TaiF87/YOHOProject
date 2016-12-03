@@ -1,5 +1,6 @@
 package com.example.dllo.yohomix.recommend;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
@@ -22,6 +23,8 @@ import com.android.volley.toolbox.Volley;
 import com.example.dllo.yohomix.R;
 import com.example.dllo.yohomix.URLValues;
 import com.example.dllo.yohomix.base.BaseFragment;
+import com.example.dllo.yohomix.volley.NetHelper;
+import com.example.dllo.yohomix.volley.NetListener;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -31,7 +34,7 @@ import java.util.Map;
 /**
  * Created by dllo on 16/11/23.
  */
-public class RecommendFragment extends BaseFragment {
+public class RecommendFragment extends BaseFragment implements View.OnClickListener {
     private ViewPager vpCycle;
     private ListView lvRecommend;
     private LinearLayout llCircle;
@@ -41,7 +44,7 @@ public class RecommendFragment extends BaseFragment {
     private BeanCarousel mBean;
     private ArrayList<MyPoint> mMyPoints;
     private DrawerLayout mDrawer;
-    private ImageView ivDrawer;
+    private ImageView ivDrawer,ivSearch;
     private boolean flag = true;
     @Override
     protected int setLayout() {
@@ -52,18 +55,12 @@ public class RecommendFragment extends BaseFragment {
     protected void initView(View view) {
         lvRecommend = bindView(R.id.lv_recommend);
         ivDrawer = bindView(R.id.iv_drawer);
+        ivSearch = bindView(R.id.iv_search);
         mDrawer = (DrawerLayout) getActivity().findViewById(R.id.activity_main);
         mDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
     }
     @Override
     protected void initData() {
-
-        ivDrawer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mDrawer.openDrawer(Gravity.LEFT);
-            }
-        });
         mAdapter = new ListViewAdapter(getContext());
         mCarouselAdapter = new CarouselAdapter(getContext());
         View headView = LayoutInflater.from(getContext()).inflate(R.layout.head_recommend,null);
@@ -71,21 +68,22 @@ public class RecommendFragment extends BaseFragment {
         llCircle = (LinearLayout) headView.findViewById(R.id.ll_circle);
         lvRecommend.addHeaderView(headView);
         mMyPoints = new ArrayList<>();
-        CarouselPic();
+        carouselPic();
         initVolley();
-        DrawRound();
-
-
+        drawRound();
+        jumpClick();
+    }
+    private void jumpClick() {
+        ivSearch.setOnClickListener(this);
+        ivDrawer.setOnClickListener(this);
     }
 
-    private void DrawRound() {
+    private void drawRound() {
 
         mHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message message) {
                 vpCycle.setCurrentItem(vpCycle.getCurrentItem() + 1);
-
-
                 return false;
             }
         });
@@ -109,32 +107,49 @@ public class RecommendFragment extends BaseFragment {
         mCarouselAdapter.setViewPager(vpCycle);
     }
 
-    private void CarouselPic() {
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLValues.CYCLE_URL, new Response.Listener<String>() {
+    private void carouselPic() {
+//        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+//        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLValues.CYCLE_URL, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                Gson gson = new Gson();
+//                mBean = gson.fromJson(response,BeanCarousel.class);
+//                mCarouselAdapter.setBean(mBean);
+//                mCarouselAdapter.setViewPager(vpCycle);
+//                vpCycle.setAdapter(mCarouselAdapter);
+//                MyPoint();
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//
+//            }
+//        }){
+//            @Override
+//            protected Map<String, String> getParams() throws AuthFailureError {
+//                Map<String,String> map = new HashMap<>();
+//                map.put(URLValues.POST_KEY,URLValues.CYCLE_VALUES);
+//                return map;
+//            }
+//        };
+//        requestQueue.add(stringRequest);
+        HashMap<String,String> map = new HashMap<>();
+                map.put(URLValues.POST_KEY,URLValues.CYCLE_VALUES);
+        NetHelper.MyRequest(URLValues.CYCLE_URL, BeanCarousel.class, new NetListener<BeanCarousel>() {
             @Override
-            public void onResponse(String response) {
-                Gson gson = new Gson();
-                mBean = gson.fromJson(response,BeanCarousel.class);
-                mCarouselAdapter.setBean(mBean);
+            public void successListener(BeanCarousel response) {
+                mCarouselAdapter.setBean(response);
                 mCarouselAdapter.setViewPager(vpCycle);
                 vpCycle.setAdapter(mCarouselAdapter);
+                mBean = response;
                 MyPoint();
             }
-        }, new Response.ErrorListener() {
+
             @Override
-            public void onErrorResponse(VolleyError error) {
+            public void errorListener(VolleyError error) {
 
             }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> map = new HashMap<>();
-                map.put(URLValues.POST_KEY,URLValues.CYCLE_VALUES);
-                return map;
-            }
-        };
-        requestQueue.add(stringRequest);
+        },map);
     }
 
     public void MyPoint() {
@@ -153,28 +168,57 @@ public class RecommendFragment extends BaseFragment {
     }
 
     private void initVolley() {
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLValues.RECOM_LIST_URL, new Response.Listener<String>() {
+        HashMap<String,String> map = new HashMap<>();
+        map.put(URLValues.POST_KEY,URLValues.RECOM_LIST_VALUES);
+        NetHelper.MyRequest(URLValues.RECOM_LIST_URL, BeanList.class, new NetListener<BeanList>() {
             @Override
-            public void onResponse(String response) {
-                Gson gson = new Gson();
-                BeanList bean = gson.fromJson(response,BeanList.class);
+            public void successListener(BeanList response) {
+                BeanList bean = response;
                 mAdapter.setListBean(bean);
                 lvRecommend.setAdapter(mAdapter);
             }
-        }, new Response.ErrorListener() {
+
             @Override
-            public void onErrorResponse(VolleyError error) {
+            public void errorListener(VolleyError error) {
 
             }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String ,String> map = new HashMap<>();
-                map.put(URLValues.POST_KEY,URLValues.RECOM_LIST_VALUES);
-                return map;
-            }
-        };
-        requestQueue.add(stringRequest);
+        },map);
+
+//        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+//        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLValues.RECOM_LIST_URL, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                Gson gson = new Gson();
+//                BeanList bean = gson.fromJson(response,BeanList.class);
+//                mAdapter.setListBean(bean);
+//                lvRecommend.setAdapter(mAdapter);
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//
+//            }
+//        }){
+//            @Override
+//            protected Map<String, String> getParams() throws AuthFailureError {
+//                Map<String ,String> map = new HashMap<>();
+//                map.put(URLValues.POST_KEY,URLValues.RECOM_LIST_VALUES);
+//                return map;
+//            }
+//        };
+//        requestQueue.add(stringRequest);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.iv_drawer:
+                mDrawer.openDrawer(Gravity.LEFT);
+                break;
+            case R.id.iv_search:
+                Intent intent = new Intent(getActivity(),SearchActivity.class);
+                startActivity(intent);
+                break;
+        }
     }
 }
