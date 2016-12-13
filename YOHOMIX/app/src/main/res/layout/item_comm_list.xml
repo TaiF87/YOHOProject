@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
+              android:layout_margin="10dp"
               android:orientation="vertical">
 
     <LinearLayout
@@ -93,39 +94,39 @@
             android:layout_margin="2dp">
 
             <ImageView
-                android:layout_centerInParent="true"
                 android:id="@+id/iv_contentPicThree"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
+                android:layout_centerInParent="true"
                 />
 
             <LinearLayout
-                android:background="@mipmap/community_post_content_image_count_bg"
                 android:id="@+id/pic_num"
                 android:layout_width="60dp"
                 android:layout_height="25dp"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
                 android:layout_margin="5dp"
+                android:background="@mipmap/community_post_content_image_count_bg"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:layout_height="15dp"
-                    android:layout_weight="1"
                     android:layout_gravity="center_vertical"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
                     android:src="@mipmap/muti_img"/>
 
                 <TextView
-                    android:layout_margin="1dp"
-                    android:text="55"
                     android:id="@+id/tv_num"
-                    android:textColor="#fff"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"/>
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:text="55"
+                    android:textColor="#fff"/>
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>

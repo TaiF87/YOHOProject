@@ -26,31 +26,36 @@
                 style="@style/radioButton"
                 android:checked="true"
                 android:drawableTop="@drawable/recommended"
-                android:text="@string/recommended"/>
+                android:text="@string/recommended"
+                android:textSize="10dp"/>
 
             <RadioButton
                 android:id="@+id/rb_columns"
                 style="@style/radioButton"
                 android:drawableTop="@drawable/columns"
-                android:text="@string/columns"/>
+                android:text="@string/columns"
+                android:textSize="10dp"/>
 
             <RadioButton
                 android:id="@+id/rb_community"
                 style="@style/radioButton"
                 android:drawableTop="@drawable/community"
-                android:text="@string/community"/>
+                android:text="@string/community"
+                android:textSize="10dp"/>
 
             <RadioButton
                 android:id="@+id/rb_video"
                 style="@style/radioButton"
                 android:drawableTop="@drawable/video"
-                android:text="@string/video"/>
+                android:text="@string/video"
+                android:textSize="10dp"/>
 
             <RadioButton
                 android:id="@+id/rb_magazine"
                 style="@style/radioButton"
                 android:drawableTop="@drawable/magazine"
-                android:text="@string/magazine"/>
+                android:text="@string/magazine"
+                android:textSize="10dp"/>
         </RadioGroup>
     </LinearLayout>
 
@@ -58,15 +63,14 @@
         android:layout_width="320dp"
         android:layout_height="match_parent"
         android:layout_gravity="left"
-        android:background="#000"
-        >
+        android:background="#000">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <LinearLayout
-                android:id="@+id/ll_click"
+                android:id="@+id/login_click"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -74,11 +78,13 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/iv_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/default_head"/>
 
                 <TextView
+                    android:id="@+id/tv_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dllo.yohomix.R;
+import com.example.dllo.yohomix.recommend.BeanCarousel;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -58,7 +59,10 @@ public class ColumnsAdapter extends BaseAdapter{
         Picasso.with(mContext).load(mBean.getData().get(i).getCover()).fit().into(holder.ivColumns);
         return view;
     }
-
+    public void addMore(BaseColumns data){
+        mBean.getData().addAll(data.getData());
+        notifyDataSetChanged();
+    }
     private class ColumnViewHolder {
         private ImageView ivColumns;
         private TextView tvPic,tvData,tvPrompt;

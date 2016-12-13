@@ -5,42 +5,56 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-        <RelativeLayout
-            style="@style/title_width_height">
+    <RelativeLayout
+        style="@style/title_width_height">
 
-            <ImageView
-                android:id="@+id/iv_drawer"
-                style="@style/imageview_personal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:src="@mipmap/toolbar_mine"/>
+        <ImageView
+            android:id="@+id/iv_drawer"
+            style="@style/imageview_personal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/toolbar_mine"/>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:src="@mipmap/white_load_0000"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/white_load_0000"/>
 
-            <ImageView
-                android:id="@+id/iv_search"
-                style="@style/imageview_search"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@mipmap/toolbar_search"/>
-        </RelativeLayout>
+        <ImageView
+            android:id="@+id/iv_search"
+            style="@style/imageview_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/toolbar_search"/>
+    </RelativeLayout>
+
+    <com.aspsine.swipetoloadlayout.SwipeToLoadLayout
+        android:id="@+id/swipe_to_load_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.example.dllo.yohomix.loadingdata.Refresh
+            android:id="@id/swipe_refresh_header"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"/>
 
         <ListView
-            android:id="@+id/lv_recommend"
+            android:id="@id/swipe_target"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="5dp"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:paddingTop="5dp"
+            android:layout_height="match_parent"
+            android:layout_margin="7dp"
             android:scrollbars="none"/>
 
+        <com.example.dllo.yohomix.loadingdata.Loading
+            android:id="@id/swipe_load_more_footer"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"/>
+    </com.aspsine.swipetoloadlayout.SwipeToLoadLayout>
 </LinearLayout>
 

@@ -29,6 +29,7 @@
         <item name="android:button">@null</item>
         <item name="android:textColor">@color/radiobutton_textcolor</item>
     </style>
+
     <style name="recommendfragment">
         <item name="android:background">#fafafa</item>
         <item name="android:layout_width">match_parent</item>
@@ -48,5 +49,9 @@
     <style name="imageview_search">
         <item name="android:layout_marginRight">15dp</item>
     </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
 </resources>

@@ -53,22 +53,5 @@ public class LiveFragment extends BaseFragment{
 
             }
         });
-
-//        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-//        StringRequest stringRequest = new StringRequest(URLValues.LIVE_URL, new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                Gson gson = new Gson();
-//                beans = gson.fromJson(response,BaseLive.class);
-//                mAdapter.setLive(beans);
-//                lvLive.setAdapter(mAdapter);
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//
-//            }
-//        });
-//        requestQueue.add(stringRequest);
     }
 }

@@ -6,6 +6,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.dllo.yohomix.sqlgreendao.YoHoApp;
 
 import java.util.HashMap;
 
@@ -37,7 +38,7 @@ public class NetHelper {
             synchronized (NetHelper.class){
                 //如果队列为空 创建我们自己的队列
                 if (mRequestQueue == null){
-                    mRequestQueue = Volley.newRequestQueue(MyApp.getmContext());
+                    mRequestQueue = Volley.newRequestQueue(YoHoApp.getContext());
                 }
             }
         }

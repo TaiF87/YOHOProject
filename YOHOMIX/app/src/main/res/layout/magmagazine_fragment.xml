@@ -15,8 +15,7 @@
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            >
+            android:layout_weight="1">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -39,6 +38,7 @@
         </RelativeLayout>
 
         <LinearLayout
+            android:id="@+id/ll_line1_two"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -46,60 +46,62 @@
 
             <ImageView
                 android:id="@+id/iv_line1_two"
-                android:layout_margin="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="110dp"/>
+                android:layout_gravity="center"
+                android:layout_width="80dp"
+                android:layout_height="130dp"/>
 
             <TextView
                 android:id="@+id/tv_line1_two"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
                 android:textColor="#000"
-                android:textSize="10sp"
+                android:textSize="10dp"
                 android:textStyle="bold"/>
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_line1_three"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
 
             <ImageView
-                android:layout_margin="10dp"
                 android:id="@+id/iv_line1_three"
-                android:layout_width="match_parent"
-                android:layout_height="110dp"/>
+                android:layout_gravity="center"
+                android:layout_width="80dp"
+                android:layout_height="130dp"/>
 
             <TextView
                 android:id="@+id/tv_line1_three"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+                android:layout_gravity="center"
                 android:textColor="#000"
                 android:textSize="10sp"
                 android:textStyle="bold"/>
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_line1_four"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
 
             <ImageView
-                android:layout_margin="10dp"
                 android:id="@+id/iv_line1_four"
-                android:layout_width="match_parent"
-                android:layout_height="110dp"/>
+                android:layout_gravity="center"
+                android:layout_width="80dp"
+                android:layout_height="130dp"/>
 
             <TextView
 
                 android:id="@+id/tv_line1_four"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+                android:layout_gravity="center"
                 android:textColor="#000"
                 android:textSize="10sp"
                 android:textStyle="bold"/>
@@ -142,66 +144,69 @@
 
 
         <LinearLayout
+            android:id="@+id/ll_line2_two"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
 
             <ImageView
-                android:layout_margin="10dp"
                 android:id="@+id/iv_line2_two"
-                android:layout_width="match_parent"
-                android:layout_height="110dp"/>
+                android:layout_gravity="center"
+                android:layout_width="80dp"
+                android:layout_height="130dp"/>
 
             <TextView
                 android:id="@+id/tv_line2_two"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+                android:layout_gravity="center"
                 android:textColor="#000"
                 android:textSize="10sp"
                 android:textStyle="bold"/>
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_line2_three"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
 
             <ImageView
-                android:layout_margin="10dp"
                 android:id="@+id/iv_line2_three"
-                android:layout_width="match_parent"
-                android:layout_height="110dp"/>
+                android:layout_gravity="center"
+                android:layout_width="80dp"
+                android:layout_height="130dp"/>
 
             <TextView
                 android:id="@+id/tv_line2_three"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+                android:layout_gravity="center"
                 android:textColor="#000"
                 android:textSize="10sp"
                 android:textStyle="bold"/>
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_line2_four"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
 
             <ImageView
-                android:layout_margin="10dp"
                 android:id="@+id/iv_line2_four"
-                android:layout_width="match_parent"
-                android:layout_height="110dp"/>
+                android:layout_gravity="center"
+                android:layout_width="80dp"
+                android:layout_height="130dp"/>
 
             <TextView
                 android:id="@+id/tv_line2_four"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+                android:layout_gravity="center"
                 android:textColor="#000"
                 android:textSize="10sp"
                 android:textStyle="bold"/>
@@ -244,66 +249,67 @@
         </RelativeLayout>
 
         <LinearLayout
+            android:id="@+id/ll_line3_two"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
 
             <ImageView
-                android:layout_margin="10dp"
                 android:id="@+id/iv_line3_two"
-                android:layout_width="match_parent"
-                android:layout_height="110dp"/>
+                android:layout_gravity="center"
+                android:layout_width="80dp"
+                android:layout_height="130dp"/>
 
             <TextView
                 android:id="@+id/tv_line3_two"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+                android:layout_gravity="center"
                 android:textColor="#000"
                 android:textSize="10sp"
                 android:textStyle="bold"/>
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_line3_three"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
 
             <ImageView
-                android:layout_margin="10dp"
                 android:id="@+id/iv_line3_three"
-                android:layout_width="match_parent"
-                android:layout_height="110dp"/>
+                android:layout_gravity="center"
+                android:layout_width="80dp"
+                android:layout_height="130dp"/>
 
             <TextView
                 android:id="@+id/tv_line3_three"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+                android:layout_gravity="center"
                 android:textColor="#000"
                 android:textSize="10sp"
                 android:textStyle="bold"/>
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_line3_four"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
-
             <ImageView
-                android:layout_margin="10dp"
                 android:id="@+id/iv_line3_four"
-                android:layout_width="match_parent"
-                android:layout_height="110dp"/>
-
+                android:layout_gravity="center"
+                android:layout_width="80dp"
+                android:layout_height="130dp"/>
             <TextView
                 android:id="@+id/tv_line3_four"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+                android:layout_gravity="center"
                 android:textColor="#000"
                 android:textSize="10sp"
                 android:textStyle="bold"/>

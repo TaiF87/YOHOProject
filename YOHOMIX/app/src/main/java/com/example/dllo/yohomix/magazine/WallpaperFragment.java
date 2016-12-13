@@ -54,22 +54,5 @@ public class WallpaperFragment extends BaseFragment {
 
             }
         });
-
-//        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-//        StringRequest stringRequest = new StringRequest(URLValues.WALLPAPER_URL, new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                Gson gson = new Gson();
-//                beans = gson.fromJson(response,BaseWallpaper.class);
-//                mAdapter.setBeen(beans);
-//                lvWall.setAdapter(mAdapter);
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//
-//            }
-//        });
-//        requestQueue.add(stringRequest);
     }
 }

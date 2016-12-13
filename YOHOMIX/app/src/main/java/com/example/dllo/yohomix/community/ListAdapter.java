@@ -9,15 +9,21 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.dllo.yohomix.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
+
 /**
  * Created by dllo on 16/11/29.
  */
-public class ListAdapter extends BaseAdapter {
+public class
+
+
+ListAdapter extends BaseAdapter {
     private BaseCommunity beens;
     private Context mContext;
     private ArrayList<String> urls;
@@ -104,7 +110,7 @@ public class ListAdapter extends BaseAdapter {
         holder.tvComment.setText(String.valueOf(beens.getData().getList().get(i).getComment()));
         holder.tvPraise.setText(String.valueOf(beens.getData().getList().get(i).getPraise()));
         String headIcon = StaticMethod.getSubstring(beens.getData().getList().get(i).getAuthorInfo().getHeadIcon());
-        Picasso.with(mContext).load(headIcon).fit().into(holder.ivHeadIcon);
+        Glide.with(mContext).load(headIcon).bitmapTransform(new CropCircleTransformation(mContext)).into(holder.ivHeadIcon);
         return view;
     }
 

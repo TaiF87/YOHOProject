@@ -1,7 +1,9 @@
 package com.example.dllo.yohomix.video;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.android.volley.AuthFailureError;
@@ -40,8 +42,22 @@ public class VideoVideoFragment extends BaseFragment{
     @Override
     protected void initData() {
         mAdapter = new VideoAdapter(getContext());
+        itemClick();
         initVolley();
     }
+
+    private void itemClick() {
+        lvVideo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getActivity(),VideoTwoActivity.class);
+                intent.putExtra("videoUrl",mBean.getData().getContent().get(i).getVideoUrl());
+                intent.putExtra("publishURL",mBean.getData().getContent().get(i).getPublishURL());
+                startActivity(intent);
+            }
+        });
+    }
+
     private void initVolley() {
         HashMap<String,String> map = new HashMap<>();
         map.put(URLValues.POST_KEY,URLValues.VIDEO_VALUES);
@@ -58,30 +74,6 @@ public class VideoVideoFragment extends BaseFragment{
 
             }
         },map);
-
-//        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-//        StringRequest stringRequest = new StringRequest(URLValues.VIDEO_URL, new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                Gson gson = new Gson();
-//                mBean = gson.fromJson(response,BaseVideo.class);
-//                mAdapter.setBeen(mBean);
-//                lvVideo.setAdapter(mAdapter);
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//
-//            }
-//        }){
-//            @Override
-//            protected Map<String, String> getParams() throws AuthFailureError {
-//                Map<String,String> mMap = new HashMap<>();
-//                mMap.put(URLValues.POST_KEY,URLValues.VIDEO_VALUES);
-//                return mMap;
-//            }
-//        };
-//        requestQueue.add(stringRequest);
     }
 
 }

@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:background="#e2e2e2"
+              android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <android.support.v4.view.ViewPager
-            android:layout_below="@+id/rl"
             android:id="@+id/vp_community"
             android:layout_width="match_parent"
-            android:layout_height="180dp"/>
+            android:layout_height="160dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:background="#e6e5e5">
+
+            <com.dalong.francyconverflow.FancyCoverFlow
+                android:id="@+id/fancyCoverFlow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,9 +34,9 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:background="#fff"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:background="#fff"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -31,14 +44,15 @@
                     android:layout_height="20dp"
                     android:layout_gravity="center"
                     android:src="@mipmap/community_home_posts_top_recommend_icon"/>
+
                 <TextView
-                    android:layout_marginLeft="10dp"
-                    android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:text="热门推荐"
                     android:textColor="#000"
-                    android:textSize="14sp"
-                    android:text="热门推荐"/>
+                    android:textSize="14sp"/>
             </LinearLayout>
 
 

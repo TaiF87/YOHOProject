@@ -2,13 +2,12 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="10dp">
+    android:layout_height="wrap_content">
 
     <RelativeLayout
         android:id="@+id/rl"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:background="#fff">
 
         <TextView
@@ -21,14 +20,16 @@
             android:textStyle="bold"/>
 
         <ImageView
+            android:id="@+id/community_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:padding="12dp"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="10dp"
             android:src="@mipmap/shoes_edit_question"/>
     </RelativeLayout>
 
     <ListView
+        android:layout_below="@+id/rl"
         android:scrollbars="none"
         android:id="@+id/lv_community"
         android:layout_width="match_parent"
