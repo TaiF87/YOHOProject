@@ -20,7 +20,6 @@ import java.util.HashMap;
 
 public class ReuseFragment extends BaseFragment {
     private ListView lvSearch;
-    private BaseTablayout beans;
     @Override
     protected int setLayout() {
         return R.layout.search_fragment;

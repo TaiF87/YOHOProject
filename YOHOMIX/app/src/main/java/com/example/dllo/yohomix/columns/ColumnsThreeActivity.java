@@ -27,8 +27,10 @@ public class ColumnsThreeActivity extends BaseActivity implements View.OnClickLi
     private ImageView ivBack, ivShare;
     private WebView mWebView;
     private ImageView ivCollect;
+    private YoHoColumns mYoHoColumns;
     private Intent mIntent;
     private boolean love = false;
+
     @Override
     protected int setLayout() {
         return R.layout.activity_columnsthree;
@@ -46,9 +48,14 @@ public class ColumnsThreeActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     protected void initData() {
+        mIntent = getIntent();
+        if (DBColumns.getInstance().querySingle(mIntent.getStringExtra("data"))) {
+            ivCollect.setImageResource(R.mipmap.love_b_s);
+        } else {
+            ivCollect.setImageResource(R.mipmap.love_b_new);
+        }
         ShareSDK.initSDK(this);
 
-        mIntent = getIntent();
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.setWebViewClient(new WebViewClient());
         mWebView.loadUrl(mIntent.getStringExtra("webview"));
@@ -67,10 +74,20 @@ public class ColumnsThreeActivity extends BaseActivity implements View.OnClickLi
                 love = !love;
                 if (love) {
                     ivCollect.setImageResource(R.mipmap.love_b_s);
+                    mYoHoColumns = new YoHoColumns();
+                    mYoHoColumns.setImgUrl(mIntent.getStringExtra("img"));
+                    mYoHoColumns.setTitle(mIntent.getStringExtra("data"));
+                    mYoHoColumns.setTagName(mIntent.getStringExtra("tagname"));
+                    mYoHoColumns.setTime(mIntent.getStringExtra("time"));
+                    mYoHoColumns.setWebUrl(mIntent.getStringExtra("webview"));
+                    DBColumns.getInstance().insertYoHoColumns(mYoHoColumns);
                 } else {
-                    ivCollect.setImageResource(R.mipmap.love_b_new);
+                    if (DBColumns.getInstance().querySingle(mIntent.getStringExtra("data"))) {
+                        ivCollect.setImageResource(R.mipmap.love_b_new);
+                        DBColumns.getInstance().deleteByTitle(mIntent.getStringExtra("data"));
+                    }
                 }
-                initCollect();
+//                initCollect();
                 break;
         }
     }
@@ -111,4 +128,6 @@ public class ColumnsThreeActivity extends BaseActivity implements View.OnClickLi
 // 启动分享GUI
         oks.show(this);
     }
+
+
 }

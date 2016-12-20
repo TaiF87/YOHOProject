@@ -86,7 +86,7 @@ public class GsonRequest<T> extends Request<T> {
         //判断 如果没有网络连接 这时我们要使用缓存数据
         if(error instanceof NoConnectionError){
 
-            Log.d("GsonRequest", "我是缓存的数据");
+            Log.d("GsonRequest", "缓存的数据");
             //获取缓存数据
             Cache.Entry entry = this.getCacheEntry();
             //创建请求 请求的数据就是我们自己缓存的数据

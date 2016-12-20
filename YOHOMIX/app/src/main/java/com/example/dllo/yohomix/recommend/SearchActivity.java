@@ -22,7 +22,6 @@ public class SearchActivity extends BaseActivity{
     private TabLayout tlSearch;
     private ViewPager vpSearch;
     private BaseTablayout bean;
-    private ArrayList<String> data;
     private SearchAdapter mAdapter;
 
     @Override

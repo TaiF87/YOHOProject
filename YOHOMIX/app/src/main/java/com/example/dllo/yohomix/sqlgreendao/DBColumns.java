@@ -1,5 +1,6 @@
 package com.example.dllo.yohomix.sqlgreendao;
 
+import org.greenrobot.greendao.query.DeleteQuery;
 import org.greenrobot.greendao.query.QueryBuilder;
 
 import java.util.List;
@@ -37,6 +38,19 @@ public class DBColumns {
         mYoHoColumnsDao.insert(yoHoColumns);
     }
     public void deleteYoHoColumns(YoHoColumns yoHoColumns){mYoHoColumnsDao.delete(yoHoColumns);}
+
+    public void deleteByTitle(String name){
+        DeleteQuery<YoHoColumns> deleteQuery = mYoHoColumnsDao.
+                queryBuilder().where(
+                YoHoColumnsDao.Properties.Title.eq(name)).buildDelete();
+        deleteQuery.executeDeleteWithoutDetachingEntities();;
+    }
+    public boolean querySingle(String name){
+        QueryBuilder<YoHoColumns> queryBuilder = mYoHoColumnsDao.queryBuilder()
+                .where(YoHoColumnsDao.Properties.Title.eq(name));
+        Long size = queryBuilder.buildCount().count();
+        return size > 0 ? true : false;
+    }
 
     public List<YoHoColumns> queryAll(){
         List<YoHoColumns> list = mYoHoColumnsDao.loadAll();

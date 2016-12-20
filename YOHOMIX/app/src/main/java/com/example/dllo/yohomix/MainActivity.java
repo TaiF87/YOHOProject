@@ -35,8 +35,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private RadioButton rbRecommended, rbColumns, rbCommunity, rbVideo, rbMagazine;
     private FragmentManager manager;
     private ImageView ivIcon;
-    private TextView tvName,myMagazine, myCollect;
+    private TextView tvName,myMagazine, myCollect,myQuestions;
     private PlatformActionListener platformActionListener;
+    private String mName;
+    private String mIcon;
 
     @Override
     protected int setLayout() {
@@ -58,6 +60,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mLogin = bindView(R.id.login_click);
         myMagazine = bindView(R.id.tv_magazine);
         myCollect = bindView(R.id.tv_collection);
+        myQuestions = bindView(R.id.tv_questions);
     }
 
     private void isLogin() {
@@ -65,12 +68,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             //回调信息，可以在这里获取基本的授权返回的信息，但是注意如果做提示和UI操作要传到主线程handler里去执行
             try {
                 PlatformDb platformDb = qq.getDb();
-                String name = platformDb.getUserName();
-                String icon = platformDb.getUserIcon();
+                mName = platformDb.getUserName();
+                mIcon = platformDb.getUserIcon();
 
-                if (!TextUtils.isEmpty(name)) {
-                    tvName.setText(name);
-                    Glide.with(this).load(icon).bitmapTransform(new CropCircleTransformation(this)).into(ivIcon);
+                if (!TextUtils.isEmpty(mName)) {
+                    tvName.setText(mName);
+                    Glide.with(this).load(mIcon).bitmapTransform(new CropCircleTransformation(this)).into(ivIcon);
                 }
             } catch (NullPointerException e) {
 
@@ -103,16 +106,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         transaction.replace(R.id.fl_main, new RecommendFragment());
         transaction.commit();
         setClick(this, rbRecommended, rbColumns, rbCommunity, rbVideo,
-                rbMagazine, mLogin, myCollect, myMagazine);
+                rbMagazine, mLogin, myCollect, myMagazine,myQuestions);
 
     }
 
     @Override
     public void onClick(View view) {
-
         manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-
         switch (view.getId()) {
             case R.id.rb_recommended:
                 transaction.replace(R.id.fl_main, new RecommendFragment());
@@ -130,22 +131,45 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 transaction.replace(R.id.fl_main, new VideoFragment());
                 mDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
                 break;
-            case R.id.rb_magazine:
-                transaction.replace(R.id.fl_main, new MagazineFragment());
-                mDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-                break;
             case R.id.login_click:
-                Intent intent = new Intent(this, LoginActivity.class);
-                startActivityForResult(intent, 0);
+                if (!TextUtils.isEmpty(mName)){
+                    Intent intent = new Intent(this, BackActivity.class);
+                    startActivityForResult(intent, 0);
+                }else  {
+                    Intent intent = new Intent(this, LoginActivity.class);
+                    startActivityForResult(intent, 0);
+                }
                 break;
             case R.id.tv_collection:
                 Intent intent1 = new Intent(this, MyCollectActivity.class);
                 startActivity(intent1);
-                Toast.makeText(this, "我的收藏", Toast.LENGTH_SHORT).show();
                 break;
+            case R.id.rb_magazine:
+                transaction.replace(R.id.fl_main, new MagazineFragment());
+                mDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+                break;
+
             case R.id.tv_magazine:
                 Intent intent2 = new Intent(this, MyMagazineActivity.class);
                 startActivity(intent2);
+                break;
+            case R.id.tv_questions:
+                Platform platform = ShareSDK.getPlatform(QQ.NAME);
+                if (platform.isAuthValid()) {
+                    // isValid和removeAccount不开启线程，会直接返回。
+                    platform.removeAccount(true);// 移除授权
+                    tvName.setText("登录");
+                    ivIcon.setImageResource(R.mipmap.default_head);
+                    mName = null;
+                } else {
+                    Toast.makeText(this, "退出登录", Toast.LENGTH_SHORT).show();
+                }
+                // 实现接口回调(login中的)
+                platform.setPlatformActionListener(platformActionListener);
+                // authorize与showUser单独调用一个即可
+//                platform.authorize();//单独授权，OnComplete返回的hashmap是空的
+//                platform.showUser(null);//授权并获取用户信息
+                setResult(-1);
                 break;
         }
         transaction.commit();
@@ -154,16 +178,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (data == null) {
             Toast.makeText(this, "已经退出", Toast.LENGTH_SHORT).show();
+            tvName.setText("登录");
+            ivIcon.setImageResource(R.mipmap.default_head);
+            mName = null;
+            mIcon = null;
         }
-
-        if (data !=null && requestCode == 0 && resultCode == 1) {
-            data.getStringExtra("name");
-            data.getStringExtra("icon");
-            Glide.with(this).load(data.getStringExtra("icon")).into(ivIcon);
-            tvName.setText(data.getStringExtra("name"));
+        if (data != null && requestCode == 0 && resultCode == 1) {
+            mName = data.getStringExtra("name");
+            mIcon = data.getStringExtra("icon");
+            Glide.with(this).load(mIcon).into(ivIcon);
+            tvName.setText(mName);
         }
 
     }

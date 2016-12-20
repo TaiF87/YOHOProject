@@ -118,13 +118,15 @@ public class ListTwoActivity extends BaseActivity{
         lvTwo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(ListTwoActivity.this,ColumnsThreeActivity.class);
-                intent.putExtra("img",mBaseTwoList.getData().getContent().get(i).getImage());
-                intent.putExtra("data",mBaseTwoList.getData().getContent().get(i).getTitle());
-                intent.putExtra("tagname",mBaseTwoList.getData().getContent().get(i).getTag().get(0).getTag_name());
-                intent.putExtra("time",mBaseTwoList.getData().getContent().get(i).getCreate_time());
-                intent.putExtra("webview",mBaseTwoList.getData().getContent().get(i - 1).getPublishURL());
-                startActivity(intent);
+                if (i > 0) {
+                    Intent intent = new Intent(ListTwoActivity.this, ColumnsThreeActivity.class);
+                    intent.putExtra("img", mBaseTwoList.getData().getContent().get(i - 1).getImage());
+                    intent.putExtra("data", mBaseTwoList.getData().getContent().get(i - 1).getTitle());
+                    intent.putExtra("tagname", mBaseTwoList.getData().getContent().get(i - 1).getTag().get(0).getTag_name());
+                    intent.putExtra("time", mBaseTwoList.getData().getContent().get(i - 1).getCreate_time());
+                    intent.putExtra("webview", mBaseTwoList.getData().getContent().get(i - 1).getPublishURL());
+                    startActivity(intent);
+                }
             }
         });
     }

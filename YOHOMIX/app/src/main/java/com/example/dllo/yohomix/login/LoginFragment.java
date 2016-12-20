@@ -113,8 +113,6 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
                 ivMore.setVisibility(View.GONE);
                 ivQQ.setVisibility(View.VISIBLE);
                 break;
-            case R.id.f:
-                break;
             case R.id.up:
                 llShow.setVisibility(View.GONE);
                 ivQQ.setVisibility(View.GONE);

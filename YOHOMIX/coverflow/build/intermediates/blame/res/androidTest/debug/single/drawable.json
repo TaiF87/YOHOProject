@@ -44,12 +44,12 @@
         "source": "/Users/dllo/Desktop/Git/YOHOProject/YOHOMIX/coverflow/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/res/drawable/abc_edit_text_material.xml"
     },
     {
-        "merged": "/Users/dllo/Desktop/Git/YOHOProject/YOHOMIX/coverflow/build/intermediates/res/merged/androidTest/debug/drawable/abc_seekbar_thumb_material.xml",
-        "source": "/Users/dllo/Desktop/Git/YOHOProject/YOHOMIX/coverflow/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/res/drawable/abc_seekbar_thumb_material.xml"
-    },
-    {
         "merged": "/Users/dllo/Desktop/Git/YOHOProject/YOHOMIX/coverflow/build/intermediates/res/merged/androidTest/debug/drawable/abc_textfield_search_material.xml",
         "source": "/Users/dllo/Desktop/Git/YOHOProject/YOHOMIX/coverflow/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/res/drawable/abc_textfield_search_material.xml"
+    },
+    {
+        "merged": "/Users/dllo/Desktop/Git/YOHOProject/YOHOMIX/coverflow/build/intermediates/res/merged/androidTest/debug/drawable/abc_seekbar_thumb_material.xml",
+        "source": "/Users/dllo/Desktop/Git/YOHOProject/YOHOMIX/coverflow/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/res/drawable/abc_seekbar_thumb_material.xml"
     },
     {
         "merged": "/Users/dllo/Desktop/Git/YOHOProject/YOHOMIX/coverflow/build/intermediates/res/merged/androidTest/debug/drawable/abc_cab_background_top_material.xml",
